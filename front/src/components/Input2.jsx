@@ -7,15 +7,32 @@ function Input2(props) {
     const [genero, setGenero] = useState("");
     const [ano, setAno] = useState("");
 
-    function cadastrar() {
-        props.mudarComponente({
-            musica: musica,
-            artista: artista,
-            album: album,
-            genero: genero,
-            ano: ano
-        });
-    }
+    const [mensagem, setMensagem] = useState("");
+
+    async function cadastrar() {
+        const resposta = await fetch ("",
+            {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify
+                ({
+                    musica: musica,
+                    artista: artista,
+                    album: album,
+                    genero: genero,
+                    ano: ano
+                })
+            }
+        );
+
+        if (!resposta.ok) {
+            setMensagem("Erro " + resposta.status);
+            return;
+        }
+
+        const dados = await resposta.json();
+        setMensagem(dados.mensagem);
+    };
 
     return (
         <div>
@@ -66,6 +83,7 @@ function Input2(props) {
             <br /> <br />
 
             <button onClick={cadastrar}>cadastrar</button>
+            <p>{mensagem}</p>
 
         </div>
     )
