@@ -1,7 +1,9 @@
 package school.spech.songAPI;
 
+import java.math.BigInteger;
+
 public class Musica {
-    private Integer id;
+    private BigInteger id;
     private String musica;
     private String artista;
     private String album;
@@ -11,7 +13,7 @@ public class Musica {
     public Musica() {
     }
 
-    public Musica(Integer id, String musica, String artista, String album, String genero, Integer ano) {
+    public Musica(BigInteger id, String musica, String artista, String album, String genero, Integer ano) {
         this.id = id;
         this.musica = musica;
         this.artista = artista;
@@ -20,11 +22,11 @@ public class Musica {
         this.ano = ano;
     }
 
-    public Integer getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 
