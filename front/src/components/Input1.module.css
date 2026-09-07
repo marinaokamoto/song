@@ -1,0 +1,19 @@
+.peixe {
+    width: 500px;
+
+    display: block;
+
+    margin: 10px auto;
+
+    animation: subirDescer 4s ease-in-out infinite;
+}
+
+@keyframes subirDescer {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}

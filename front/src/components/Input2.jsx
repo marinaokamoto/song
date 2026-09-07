@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./Input2.module.css";
 
 function Input2(props) {
     const [musica, setMusica] = useState("");
@@ -52,59 +53,76 @@ function Input2(props) {
     }
         
     return (
-        <div>
+    <div className={styles.fullpage}>
+        <div className={styles.inputs}>
+    
+            <div className={styles.campo}>
+                <span>Qual sua música fav?</span>
+                <input
+                    type="text"
+                    placeholder="Digite a mais mais"
+                    value={musica}
+                    onChange={(e) => setMusica(e.target.value)}
+                />
+            </div>
 
-            <span>Qual sua música fav?</span> <br />
-            <input
-                type="text"
-                placeholder="Digite a mais mais"
-                value={musica}
-                onChange={(e) => setMusica(e.target.value)}
-            />
-            <br /> <br />
+            <div className={styles.campo}>
+                <span>Artista?</span>
+                <input
+                    type="text"
+                    placeholder="De quem é a música"
+                    value={artista}
+                    onChange={(e) => setArtista(e.target.value)}
+                />
+            </div>
 
-            <span>Artista?</span> <br />
-            <input
-                type="text"
-                placeholder="De quem é a música"
-                value={artista}
-                onChange={(e) => setArtista(e.target.value)}
-            />
-            <br /> <br />
+            <div className={styles.campo}>
+                <span>Sabe o álbum?</span>
+                <input
+                    type="text"
+                    placeholder="Digite o nome do álbum"
+                    value={album}
+                    onChange={(e) => setAlbum(e.target.value)}
+                />
+            </div>
 
-            <span>Sabe o álbum?</span> <br />
-            <input
-                type="text"
-                placeholder="Digite o nome do álbum"
-                value={album}
-                onChange={(e) => setAlbum(e.target.value)}
-            />
-            <br /> <br />
+            <div className={styles.campo}>
+                <span>Gênero?</span>
+                <input
+                    type="text"
+                    placeholder="Da música, não o seu"
+                    value={genero}
+                    onChange={(e) => setGenero(e.target.value)}
+                />
+            </div>
 
-            <span>Gênero?</span> <br />
-            <input
-                type="text"
-                placeholder="Da música, não o seu"
-                value={genero}
-                onChange={(e) => setGenero(e.target.value)}
-            />
-            <br /> <br />
+            <div className={styles.campo}>
+                <span>Ano de lançamento?</span>
+                <input
+                    type="number"
+                    placeholder="Se você souber"
+                    value={ano}
+                    onChange={(e) => setAno(e.target.value)}
+                />
+            </div>
+    
+            <div className={styles.botoes}>
+                <button onClick={cadastrar}>cadastrar</button>
+                <button onClick={props.mudarComponente}>voltar</button>
+            </div>
+        </div>
 
-            <span>Ano de lançamento?</span> <br />
-            <input
-                type="number"
-                placeholder="Se você souber"
-                value={ano}
-                onChange={(e) => setAno(e.target.value)}
-            />
-            <br /> <br />
-
-            <button onClick={cadastrar}>cadastrar</button>
-            <button onClick={props.mudarComponente}>voltar</button> <br />
-
-            <p>{mensagem}</p> 
-            <img src={imagemErro} alt="Erro HTTP" />
-            <br /><br />
+        <div className={styles.results}>
+            {mensagem && <p>{mensagem}</p>}
+            {imagemErro && (
+                <div className={styles.containerImagemErro}>
+                    <img
+                        className={styles.imagemErro}
+                        src={imagemErro}
+                        alt="Erro HTTP"
+                    />
+                </div>
+)}
 
             {resultado.map((musica) => (
                 <div key={musica.id}>
@@ -116,8 +134,9 @@ function Input2(props) {
                     <hr />
                 </div>
             ))}
-
         </div>
+
+    </div>
     )
 
 }

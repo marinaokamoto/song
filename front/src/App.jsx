@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Input1 from "./components/Input1";
 import Input2 from "./components/Input2";
-
+import "./App.css";
 
 function App() {
   const [etapa, setEtapa] = useState(1);
